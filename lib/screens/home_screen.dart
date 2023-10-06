@@ -1,12 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:quotesapp/constants/dart/onBoard_pages.dart';
 import 'package:quotesapp/models/dart/theme_model.dart';
+import 'package:quotesapp/screens/achievements.dart';
 import 'package:quotesapp/screens/chat_screen.dart';
+import 'package:quotesapp/screens/image.dart';
 import 'package:quotesapp/screens/relax_screen.dart';
+import 'package:quotesapp/screens/secrets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/dart/DateTimeModel.dart';
+import '../services/database.dart';
+import '../widgets/dart/burn_widget.dart';
+import '../widgets/dart/dialog_box.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,6 +26,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   // final user = FirebaseAuth.instance.currentUser!;
+  final TextEditingController secretController = TextEditingController();
+  final List<String> secrets = [];
+
+
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
+
+
+
+
 
 
   @override
@@ -91,12 +115,9 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.only(
                           left: 20.0, top: 10.0, bottom: 10.0),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children:   [
-                           Text('37cc',
-                            style: TextStyle(color: Colors.black,
-                                fontSize: 18),),
                           Text(' ${dateTimeModel.currentTime}',
                             style: TextStyle(color: Colors.black, fontSize: 18),
                           ),
@@ -104,44 +125,83 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  // ListView.builder(itemBuilder: (BuildContext context, int index) {
-                  //   return Container(
-                  //     child: Card(
-                  //       shape: RoundedRectangleBorder(
-                  //           borderRadius: BorderRadius.circular(10)),
-                  //       child: const Padding(
-                  //         padding: EdgeInsets.all(12.0),
-                  //         child: Text(
-                  //           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. \nLorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-                  //           style: TextStyle(fontSize: 14),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   );
-                  // }),
                   Padding(
                     padding: EdgeInsets.all(20),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Container(
-                        height: 370,
+                        height: 300,
                         color: Colors.deepPurple.shade200,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
 
                           children: [
-                            Text('Text ',
-                              style: TextStyle(
-                                  color: Colors.black54, fontSize: 25),),
-                            Text(' Image',
-                              style: TextStyle(
-                                  color: Colors.deepPurple.shade500,
-                                  fontSize: 25),),
+                            TextButton(onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => SecretPage(
+                                  ),
+                                ),
+                              );
+                            },
+                              child: Text(
+                        'Secret',
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 25,
+                        ),
+                      ),
+                      ),
+
+                            TextButton(onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => MultipleImageSelector(
+                                  ),
+                                ),
+                              );
+                            },
+                              child: Text(
+                                'images',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 25,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
                     ),
                   ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      height: 60,
+                      width: 370,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Achievementpage(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepPurple.shade200,
+
+                        ),
+                        child: const Text('GOALS',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
                 ],
               ),
             ),

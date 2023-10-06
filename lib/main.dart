@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:quotesapp/firebase_options.dart';
 import 'package:quotesapp/screens/splashscreen.dart';
 import 'package:quotesapp/services/auth_services.dart';
@@ -16,6 +18,13 @@ void main() async {
    await Firebase.initializeApp(
      options: DefaultFirebaseOptions.currentPlatform
    );
+
+  //init the hive
+  await Hive.initFlutter();
+
+//open a box
+  var box = await Hive.openBox('mybox');
+  var box3 = await Hive.openBox('mybox3');
   runApp(const MyApp());
 }
 
