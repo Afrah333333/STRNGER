@@ -1,16 +1,36 @@
-# quotesapp
+# STRNGER
 
-A new Flutter project.
+A flutter application that promotes mental well-being and private communication between the public.
 
-## Getting Started
+## sections
+it is divided into three main sections including home, relax, and chat sections:
+## Home screen
+This section provides users the ability to write their secrets and upload images to be deleted for satisfaction and also allows them to write achievements and celebrate them.
+<div style="display: flex; justify-content: space-between;">
+<img src="assets/home.png" alt="App Screenshot" width="200" height="400">
+<img src="assets/write secrets.png" alt="App Screenshot" width="200" height="400">
+  <img src="assets/select images.png" alt="App Screenshot" width="200" height="400">
+</div>
 
-This project is a starting point for a Flutter application.
+## Relaxation screen
+This section provides users with the ability to meditate and relax while listening to calming sounds.
+<div style="display: flex; justify-content: space-between;">
+<img src="assets/relax.png" alt="App Screenshot" width="200" height="400">
+  <img src="assets/meditation.png" alt="App Screenshot" width="200" height="400">
+<img src="assets/song list.png" alt="App Screenshot" width="200" height="400">
+  <img src="assets/music play.png" alt="App Screenshot" width="200" height="400">
+</div>
 
-A few resources to get you started if this is your first Flutter project:
+## Chat screen
+This section provides users the ability to share their worries with others while securing their privacy.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<div style="display: flex; justify-content: space-between;">
+<img src="assets/chats.png" alt="App Screenshot" width="200" height="400">
+  <img src="assets/messages.png" alt="App Screenshot" width="200" height="400">
+<img src="assets/options.png" alt="App Screenshot" width="200" height="400">
+</div>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Profile screen
+This section provides users the ability to customize their info to suit their tastes.
+
+<img src="assets/profile.png" alt="App Screenshot" width="200" height="400">
